@@ -36,6 +36,9 @@ for i in range(len(arquivos)):
 	except AttributeError:
 		pass
 
+	# passando os dados para um retorno... onde estou guardando tudo...
+	# inclusive a competência... ou vou usar para pesquisar em seguida...
+
 	retorno.append({
 		'Competencia' : competencias[i],
       	'ValorServicos': valorServicos,
@@ -44,16 +47,17 @@ for i in range(len(arquivos)):
       	'BaseCalculo': baseCalculo,
       	'ValorLiquidoNfse': valorLiquidoNfse,
 	})
-
+	
+	# comparando a competência com a comp
 
 	if comp == retorno[i]["Competencia"]:
-		
 		retorno[i]["ValorServicos"] += (retorno[i-1]["ValorServicos"])
 		retorno[i]["ValorIss"] += (retorno[i-1]["ValorIss"])
 		retorno[i]["ValorIssRetido"] += (retorno[i-1]["ValorIssRetido"])
 		retorno[i]["BaseCalculo"] += (retorno[i-1]["BaseCalculo"])
 		retorno[i]["ValorLiquidoNfse"] += (retorno[i-1]["ValorLiquidoNfse"])
-		
+		# sempre removo a linha antes de adicionar para o resultado...
+		# para que não tenha linhas adicionais!
 		resultado.pop()
 
 		resultado.append({
@@ -75,7 +79,9 @@ for i in range(len(arquivos)):
 			'BaseCalculo': retorno[i]["BaseCalculo"],
 			'ValorLiquidoNfse': retorno[i]["ValorLiquidoNfse"],
 		})
-	
 
+# usando o panda para imprimir no formato CSV
 tabela = pd.DataFrame(resultado)
 tabela.to_csv('C://Users//Leonardo//Desktop//tabela.csv')
+# para imprimir na tela usaria
+# print(tabela)
