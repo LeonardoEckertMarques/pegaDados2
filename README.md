@@ -1,4 +1,6 @@
-# NFSe - pegaDados2
-## Primeira versão do pegaDados em Python
-## Funcionando e em mais de um tipo de impressão
-## Serão executadas melhorias
+# pegaDados2 - NFSe
+* Acessando pasta /xml
+* Lendo todos os arquivos
+* Associando para retorno e resultado
+* Diferente da última versão em PHP
+* Imprindo em CSV ou na tela
